@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogos Go - Dark & Clean Website</title>
+<style>
+  body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+  }
+  
+  header {
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+  }
+
+  main {
+    display: flex;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+  }
+
+  aside {
+    background-color: #1a1a1a; /* Adjusted darker color */
+    padding: 20px;
+    width: 250px; /* Adjusted sidebar width */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Hide content overflow */
+  }
+
+  nav {
+    margin-bottom: 20px;
+  }
+
+  nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+  main section {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: center;
+  }
+
+  footer {
+    background-color: #111;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  /* Additional styles for logo and name */
+  .logo {
+    width: 150px; /* Adjust the width as needed */
+    height: 150px; /* Adjust the height as needed */
+    border-radius: 50%; /* Make it circular */
+    margin: 0 auto 20px; /* Center the image and add some bottom margin */
+    display: block; /* Ensure the image is displayed as a block element */
+    object-fit: cover; /* Prevent image distortion */
+  }
+
+  .name {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .description {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <!-- Moved profile picture, name, and description to the sidebar -->
+  <aside id="sidebar">
+    <!-- Placeholder for channel logo -->
+    <img src="placeholder.png" alt="Jogos Go Logo" class="logo">
+    <h2 class="name">JogosGo</h2>
+    <p class="description">Howdy!, Eae Eu Sou o Jogos Go! Eu Gosto de Undertale, Minecraft, Roblox e mais! Espero que goste do meu canal</p>
+    
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+    </nav>
+  </aside>
+  <!-- End of sidebar -->
+</header>
+
+<main>
+</main>
+
+<footer>
+  <p>&copy; 2024 Jogos Go - Dark & Clean Website. All rights reserved.</p>
+</footer>
+
+<!-- JavaScript to fetch channel logo -->
+<script>
+  // Replace 'YOUR_CHANNEL_ID' with your actual YouTube channel ID
+  const channelId = 'UCJhccCAmr6LSIsJvMx0U-BA';
+  
+  // Fetch channel logo using YouTube Data API
+  fetch(`https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=AIzaSyCuMcIOKzM8ecZ9Yj4v9LQn7tfI2kAjupg`)
+    .then(response => response.json())
+    .then(data => {
+      // Get channel logo URL
+      const logoUrl = data.items[0].snippet.thumbnails.default.url;
+      
+      // Update sidebar with channel logo
+      document.getElementById('sidebar').innerHTML = `
+        <img src="${logoUrl}" alt="Jogos Go Logo" class="logo">
+        <h2 class="name">JogosGo</h2>
+        <p class="description">Howdy!, Eae Eu Sou o Jogos Go! Eu Gosto de Undertale, Minecraft, Roblox e mais! Espero que goste do meu canal</p>
+        
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">About</a>
+        </nav>
+      `;
+    })
+    .catch(error => {
+      console.error('Error fetching channel logo:', error);
+    });
+</script>
+
+</body>
+</html>
